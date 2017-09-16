@@ -11,6 +11,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
+const postCSSLoader = require('./loaders/postcssLoader');
 const getClientEnvironment = require('./env');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -172,27 +173,41 @@ module.exports = {
 											options: {
 												importLoaders: 1,
 												minimize: true,
+												sourceMap: shouldUseSourceMap,
+												modules: true,
+												localIdentName: '[name]__[local]___[hash:base64:5]'
+											}
+										}
+									]
+								},
+								extractTextPluginOptions
+							)
+						),
+						include: /flexboxgrid/
+					},
+					{
+						test: /\.scss$/,
+						include: [paths.appNodeModules, paths.appSrc],
+						loader: ExtractTextPlugin.extract(
+							Object.assign(
+								{
+									fallback: require.resolve('style-loader'),
+									use: [
+										{
+											loader: require.resolve('css-loader'),
+											options: {
+												importLoaders: 1,
+												minimize: true,
 												sourceMap: shouldUseSourceMap
 											}
 										},
+										postCSSLoader({
+											sourceMap: shouldUseSourceMap
+										}),
 										{
-											loader: require.resolve('postcss-loader'),
+											loader: require.resolve('sass-loader'),
 											options: {
-												// Necessary for external CSS imports to work
-												// https://github.com/facebookincubator/create-react-app/issues/2677
-												ident: 'postcss',
-												plugins: () => [
-													require('postcss-flexbugs-fixes'),
-													autoprefixer({
-														browsers: [
-															'>1%',
-															'last 4 versions',
-															'Firefox ESR',
-															'not ie < 9' // React doesn't support IE8 anyway
-														],
-														flexbox: 'no-2009'
-													})
-												]
+												sourceMap: shouldUseSourceMap
 											}
 										}
 									]

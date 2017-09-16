@@ -10,6 +10,7 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
+const postCSSLoader = require('./loaders/postcssLoader');
 const paths = require('./paths');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -165,25 +166,23 @@ module.exports = {
 									importLoaders: 1
 								}
 							},
+							postCSSLoader()
+						],
+						exclude: /flexboxgrid/
+					},
+					{
+						test: /\.scss$/,
+						use: [
+							require.resolve('style-loader'),
 							{
-								loader: require.resolve('postcss-loader'),
+								loader: require.resolve('css-loader'),
 								options: {
-									// Necessary for external CSS imports to work
-									// https://github.com/facebookincubator/create-react-app/issues/2677
-									ident: 'postcss',
-									plugins: () => [
-										require('postcss-flexbugs-fixes'),
-										autoprefixer({
-											browsers: [
-												'>1%',
-												'last 4 versions',
-												'Firefox ESR',
-												'not ie < 9' // React doesn't support IE8 anyway
-											],
-											flexbox: 'no-2009'
-										})
-									]
+									importLoaders: 1
 								}
+							},
+							postCSSLoader(),
+							{
+								loader: require.resolve('sass-loader')
 							}
 						]
 					},
