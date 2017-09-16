@@ -5,6 +5,9 @@
 .hero {
 	background-color: darken(#fafafa, 5%);
 	text-align: center;
+	img {
+		max-width: 100%;
+	}
 }
 
 @keyframes App-logo-spin {
