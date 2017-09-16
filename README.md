@@ -1,7 +1,7 @@
 # bairesweb.community
 Sitio web de la meetup "Buenos Aires Web Community". 
 
-[bairesweb.community](https://bairesweb.community)
+[bairesweb.community](https://www.bairesweb.community/)
 
 <h2 align="center">Organizadores</h2>
 
