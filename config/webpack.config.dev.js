@@ -168,7 +168,7 @@ module.exports = {
 							},
 							postCSSLoader()
 						],
-						exclude: /flexboxgrid/
+						include: /flexboxgrid/
 					},
 					{
 						test: /\.scss$/,

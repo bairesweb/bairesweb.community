@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"firebase": "3.9.0",
 		"promise": "8.0.1",
 		"react": "15.6.1",
 		"react-dom": "15.6.1",
@@ -66,6 +67,7 @@
 		"lint:node": "./node_modules/.bin/check-node-version --node 6 --yarn 1",
 		"lint:staged": "./node_modules/.bin/lint-staged",
 		"lint": "yarn run lint:node && yarn run lint:versions && yarn run lint:js && yarn run lint:css",
+		"deploy": "yarn run build && firebase deploy",
 		"prepush": "yarn run lint",
 		"precommit": "yarn run pre-commit-msg && yarn run lint:staged",
 		"pre-commit-msg": "echo 'Pre-commit checks...' && exit 0"
