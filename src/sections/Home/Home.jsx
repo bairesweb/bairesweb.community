@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
-import logo from './images/logo.svg';
-import './Home.css';
+import logo from './images/bairesWeb-logo-blanco.svg';
+import './Home.scss';
+
+// Components
+import { Grid, Row, Col } from 'components/Grid';
 
 class App extends Component {
 	render() {
 		return (
-			<div className="App">
-				<div className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<h2>Welcome to React</h2>
-				</div>
-				<p className="App-intro">
-					To get started, edit <code>src/App.js</code> and save to reload.
-				</p>
-			</div>
+			<header className="hero">
+				<Grid fluid>
+					<Row>
+						<Col sm={12}>
+							<img src={logo} className="logo" alt="logo" />
+							<h1 hidden>BairesWeb</h1>
+							<p>
+								Sitio web oficial de la comunidad de{' '}
+								<a href="https://www.meetup.com/es-ES/bairesweb/">BairesWeb</a>
+							</p>
+						</Col>
+					</Row>
+				</Grid>
+			</header>
 		);
 	}
 }
