@@ -1,0 +1,73 @@
+/** public/fonts/ */
+@font-face {
+	font-family: 'bw-icons';
+	src: url('public/fonts/bw-icons.eot');
+	src: url('public/fonts/bw-icons.eot?#iefix') format('eot'),
+		url('public/fonts/bw-icons.woff2') format('woff2'),
+		url('public/fonts/bw-icons.woff') format('woff'),
+		url('public/fonts/bw-icons.ttf') format('truetype'),
+		url('public/fonts/bw-icons.svg#bw-icons') format('svg');
+}
+
+@mixin bw-icon-styles {
+	font-family: 'bw-icons';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%bw-icon {
+	@include bw-icon-styles;
+}
+
+@function bw-icon-char($filename) {
+	$char: '';
+
+	// github 
+	@if $filename == github {
+		$char: '\ea01';
+	}
+
+	// meetup 
+	@if $filename == meetup {
+		$char: '\ea02';
+	}
+
+	// twitter 
+	@if $filename == twitter {
+		$char: '\ea03';
+	}
+
+	@return $char;
+}
+
+@mixin bw-icon($filename, $insert: before, $extend: true) {
+	&:#{$insert} {
+		@if $extend {
+			@extend %bw-icon;
+		} @else {
+			@include bw-icon-styles;
+		}
+		content: bw-icon-char($filename);
+	}
+}
+
+// name,unicode
+.bw-icon-github {
+	@include bw-icon(github);
+}
+
+// name,unicode
+.bw-icon-meetup {
+	@include bw-icon(meetup);
+}
+
+// name,unicode
+.bw-icon-twitter {
+	@include bw-icon(twitter);
+}
