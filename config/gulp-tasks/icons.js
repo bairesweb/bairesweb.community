@@ -8,6 +8,10 @@ let iconfont = require('gulp-iconfont');
 let rename = require('gulp-rename');
 let consolidate = require('gulp-consolidate');
 
+/**
+ * Get fontawesome icons
+ * https://github.com/encharm/Font-Awesome-SVG-PNG/tree/master/black/svg
+ */
 const iconPath = {
 	/**
 	 * Directory where gulp should grab the icons
