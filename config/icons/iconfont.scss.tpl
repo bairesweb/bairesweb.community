@@ -28,11 +28,10 @@
 	@include <%= cssClass%>-styles;
 }
 
-@function <%= cssClass%>-char($filename) {
+@function <%= cssClass%>Char($filename) {
 	$char: "";
 <% _.each(glyphs, function(glyph) { %>
-	// <%= glyph.name %> <%= glyph.unicode %>
-	@if $filename == <%= glyph.name %> {
+	@if $filename == '<%= glyph.name %>' {
 		$char: "\<%= getIconCode(glyph) %>";
 	}
 <% }); %>
@@ -42,18 +41,18 @@
 
 @mixin <%= cssClass%>($filename, $insert: before, $extend: true) {
 	&:#{$insert} {
-		@if $extend {
+		@if $extend == true {
 			@extend %<%= cssClass%>;
 		} @else {
 			@include <%= cssClass%>-styles;
 		}
-		content: <%= cssClass%>-char($filename);
+		content: <%= cssClass%>Char($filename);
 	}
 }
 
 <% _.each(glyphs, function(glyph) { %>
 // <%= Object.keys(glyph) %>
 .<%= cssClass%>-<%= glyph.name %> {
-	@include <%= cssClass%>(<%= glyph.name %>);
+	@include <%= cssClass%>('<%= glyph.name %>');
 }
 <% }); %>

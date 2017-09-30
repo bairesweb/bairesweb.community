@@ -37,11 +37,12 @@ console.log(iconPath.outputPath);
 // return;
 
 gulp.task('icons', function() {
+	const iconClass = 'bwIcon';
 	return gulp
 		.src(iconPath.src)
 		.pipe(
 			iconfont({
-				fontName: 'bw-icons',
+				fontName: `${iconClass}s`,
 				formats: ['ttf', 'woff', 'woff2', 'svg', 'eot'],
 				prependUnicode: true, // add code to file name
 				normalize: true,
@@ -84,7 +85,7 @@ gulp.task('icons', function() {
 						glyphs: glyphs,
 						fontName: options.fontName,
 						fontPath: 'fonts/',
-						cssClass: 'bw-icon'
+						cssClass: `${iconClass}`
 					})
 				)
 				.pipe(rename('Icon.scss'))

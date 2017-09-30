@@ -1,16 +1,16 @@
-/** ./fonts/ */
+/** fonts/ */
 @font-face {
-	font-family: 'bw-icons';
-	src: url('fonts/bw-icons.eot');
-	src: url('fonts/bw-icons.eot?#iefix') format('eot'),
-		url('fonts/bw-icons.woff2') format('woff2'),
-		url('fonts/bw-icons.woff') format('woff'),
-		url('fonts/bw-icons.ttf') format('truetype'),
-		url('fonts/bw-icons.svg#bw-icons') format('svg');
+	font-family: 'bwIcons';
+	src: url('fonts/bwIcons.eot');
+	src: url('fonts/bwIcons.eot?#iefix') format('eot'),
+		url('fonts/bwIcons.woff2') format('woff2'),
+		url('fonts/bwIcons.woff') format('woff'),
+		url('fonts/bwIcons.ttf') format('truetype'),
+		url('fonts/bwIcons.svg#bwIcons') format('svg');
 }
 
-@mixin bw-icon-styles {
-	font-family: 'bw-icons';
+@mixin bwIcon-styles {
+	font-family: 'bwIcons';
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-style: normal;
@@ -21,53 +21,50 @@
 	text-transform: none;
 }
 
-%bw-icon {
-	@include bw-icon-styles;
+%bwIcon {
+	@include bwIcon-styles;
 }
 
-@function bw-icon-char($filename) {
+@function bwIconChar($filename) {
 	$char: '';
 
-	// github 
-	@if $filename == github {
+	@if $filename == 'github' {
 		$char: '\ea01';
 	}
 
-	// meetup 
-	@if $filename == meetup {
+	@if $filename == 'meetup' {
 		$char: '\ea02';
 	}
 
-	// twitter 
-	@if $filename == twitter {
+	@if $filename == 'twitter' {
 		$char: '\ea03';
 	}
 
 	@return $char;
 }
 
-@mixin bw-icon($filename, $insert: before, $extend: true) {
+@mixin bwIcon($filename, $insert: before, $extend: true) {
 	&:#{$insert} {
-		@if $extend {
-			@extend %bw-icon;
+		@if $extend == true {
+			@extend %bwIcon;
 		} @else {
-			@include bw-icon-styles;
+			@include bwIcon-styles;
 		}
-		content: bw-icon-char($filename);
+		content: bwIconChar($filename);
 	}
 }
 
 // name,unicode
-.bw-icon-github {
-	@include bw-icon(github);
+.bwIcon-github {
+	@include bwIcon('github');
 }
 
 // name,unicode
-.bw-icon-meetup {
-	@include bw-icon(meetup);
+.bwIcon-meetup {
+	@include bwIcon('meetup');
 }
 
 // name,unicode
-.bw-icon-twitter {
-	@include bw-icon(twitter);
+.bwIcon-twitter {
+	@include bwIcon('twitter');
 }
