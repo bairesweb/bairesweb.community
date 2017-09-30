@@ -1,0 +1,33 @@
+$FONTPATH: './fonts';
+
+$brand-primary: #b2d235; // BairesWeb verde
+$brand-secondary: #28d166;
+
+// Animation
+$transition-speed: 300ms !default;
+// Text
+$font-familiy-sans-serif: 'Roboto-Regular', 'Helvetica Neue', Helvetica, Arial,
+	sans-serif;
+$text-color: #444;
+$text-color-highlight: $brand-primary;
+$text-color-soft: #bbbbbb;
+// Link
+$link-text-color: darken(saturate($brand-secondary, 15%), 15%);
+$link-text-color-hover: darken(saturate($link-text-color, 5%), 10%);
+$link-text-color-active: darken($link-text-color, 12.5%);
+
+// Mixins
+/**
+ * Apply the same transition, always
+ */
+@mixin transition($prop, $times: 1) {
+	$values: '#{$prop} #{$transition-speed * $times} ease';
+	@if (length($prop) > 1) {
+		$values: ();
+		@each $p in $prop {
+			$values: append($values, #{$p} #{400ms * $times} ease, 'comma');
+		}
+		// $values: #{$values}
+	}
+	transition: #{$values};
+}

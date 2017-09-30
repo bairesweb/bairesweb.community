@@ -6,3 +6,12 @@
 	background-color: darken(#fafafa, 5%);
 	text-align: center;
 }
+
+.social-network {
+	margin: 5em auto 1em auto;
+	&-list {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+	}
+}

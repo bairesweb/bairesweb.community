@@ -1,12 +1,12 @@
-/** public/fonts/ */
+/** ./fonts/ */
 @font-face {
 	font-family: 'bw-icons';
-	src: url('public/fonts/bw-icons.eot');
-	src: url('public/fonts/bw-icons.eot?#iefix') format('eot'),
-		url('public/fonts/bw-icons.woff2') format('woff2'),
-		url('public/fonts/bw-icons.woff') format('woff'),
-		url('public/fonts/bw-icons.ttf') format('truetype'),
-		url('public/fonts/bw-icons.svg#bw-icons') format('svg');
+	src: url('fonts/bw-icons.eot');
+	src: url('fonts/bw-icons.eot?#iefix') format('eot'),
+		url('fonts/bw-icons.woff2') format('woff2'),
+		url('fonts/bw-icons.woff') format('woff'),
+		url('fonts/bw-icons.ttf') format('truetype'),
+		url('fonts/bw-icons.svg#bw-icons') format('svg');
 }
 
 @mixin bw-icon-styles {

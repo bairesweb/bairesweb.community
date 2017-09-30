@@ -27,7 +27,8 @@ const iconPath = {
 	componentPath: path.resolve(__dirname, paths.appSrc + '/components/Icon'),
 	json: path.resolve(__dirname, paths.appSrc + '/components/Icon/Icon.json'),
 	// outputPath: path.resolve(__dirname, paths.appPublic + '/fonts/'),
-	outputPath: 'public/fonts/',
+	// outputPath: './public/fonts/',
+	outputPath: path.resolve(__dirname, paths.appComponents + '/Icon/fonts'),
 
 	version: '1.0'
 };
@@ -82,7 +83,7 @@ gulp.task('icons', function() {
 					consolidate('lodash', {
 						glyphs: glyphs,
 						fontName: options.fontName,
-						fontPath: iconPath.outputPath,
+						fontPath: 'fonts/',
 						cssClass: 'bw-icon'
 					})
 				)

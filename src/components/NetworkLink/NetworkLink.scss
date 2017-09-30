@@ -1,11 +1,70 @@
-.network-link {
-	display: flex;
-	flex-direction: column;
+@import '../../styles/_variables.scss';
+
+.network {
+	&-link {
+		display: flex;
+		flex-direction: column;
+		text-decoration: none;
+		font-size: 2.2em;
+		&.size {
+			&-xs {
+				font-size: 1.6em;
+				&-title {
+					font-size: 0.8em;
+				}
+			}
+			&-md {
+				font-size: 2.8em;
+				&-title {
+					font-size: 0.6em;
+				}
+			}
+			&-lg {
+				font-size: 3.6em;
+				&-title {
+					font-size: 0.2em;
+				}
+			}
+		}
+		&:hover {
+			.network-title {
+				opacity: 1;
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	}
+	&-title {
+		color: $text-color-soft;
+		text-transform: uppercase;
+		font-size: 0.25em;
+		margin: 0;
+		opacity: 0;
+		transform: translate3d(0, -1em, 0);
+		@include transition((opacity, transform));
+	}
+	&-icon-wrapper {
+		text-align: center;
+	}
+	&-icon {
+		font-size: 1em;
+		display: inline-block;
+	}
 }
-.network-icon-wrapper {
-}
-.network-name {
+
+@mixin network-social-icon($normal, $hover: $normal) {
+	color: $normal;
+	&:hover {
+		color: $hover;
+	}
 }
 .network-icon {
-	font-size: 1em;
+	&-twitter {
+		@include network-social-icon(#00aced, #0084b4);
+	}
+	&-meetup {
+		@include network-social-icon(#e51937, #fe0025);
+	}
+	&-github {
+		@include network-social-icon(#171515, #110f0f);
+	}
 }

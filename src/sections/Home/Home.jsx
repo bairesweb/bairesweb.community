@@ -53,17 +53,27 @@ class App extends Component {
 						</Row>
 					</Grid>
 				</header>
-				<ul className="social-network-list clear-list">
-					{this.state.networks.map(network => (
-						<li>
-							<NetworkLink
-								name={network.name}
-								icon={network.id}
-								link={network.href}
-							/>
-						</li>
-					))}
-				</ul>
+				<Grid fluid>
+					<Row center="sm">
+						<Col sm={6}>
+							<div className="social-network">
+								<h3>Siguenos en nuestras redes</h3>
+								<ul className="social-network-list clear-list">
+									{this.state.networks.map(network => (
+										<li>
+											<NetworkLink
+												name={network.name}
+												icon={network.id}
+												link={network.href}
+												size="lg"
+											/>
+										</li>
+									))}
+								</ul>
+							</div>
+						</Col>
+					</Row>
+				</Grid>
 			</div>
 		);
 	}
