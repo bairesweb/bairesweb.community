@@ -1,0 +1,20 @@
+@import '../_variables.scss';
+
+@mixin font-familiy($fontName, $fontDir: $fontName) {
+	@font-face {
+		font-family: '#{$fontName}';
+		src: url('#{$FONTPATH}/#{$fontDir}/#{$fontName}.ttf') format('truetype');
+	}
+}
+
+$fonts-family: (
+	 ('roboto', 'Roboto-Regular'),
+	 ('roboto', 'Roboto-Light'),
+	 ('roboto', 'Roboto-Bold')
+);
+
+@each $font in $fonts-family {
+	$dir: nth($font, 1);
+	$name: nth($font, 2);
+	@include font-familiy($name, $dir);
+}

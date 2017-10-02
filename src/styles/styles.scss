@@ -1,6 +1,32 @@
+@import './_variables.scss';
+@import './fonts/_fonts.scss';
+
 body {
 	margin: 0;
 	padding: 0;
-	font-family: sans-serif;
+	font-size: 16px;
+	font-family: $font-familiy-sans-serif;
 	background-color: #fafafa;
+}
+
+img {
+	max-width: 100%;
+}
+
+a {
+	color: $link-text-color;
+	@include transition(color);
+	&:hover {
+		color: $link-text-color-hover;
+	}
+	&:active,
+	&:focus {
+		color: $link-text-color-active;
+	}
+}
+
+.clear-list {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 0;
 }
